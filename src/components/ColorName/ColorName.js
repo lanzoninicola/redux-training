@@ -1,11 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
-const ColorName = ({ colorChoosed }) => {
+const ColorName = ({ ...props }) => {
 
     let colorName = null;
 
-    switch (colorChoosed) {
+    switch (props.colorChoosed) {
         case '#ff0000':
             colorName = 'red';
             break;
@@ -20,7 +21,6 @@ const ColorName = ({ colorChoosed }) => {
             break;
     }
 
-
     return (
         <div id="ColorName">
             <p>Color choosed:</p>
@@ -30,4 +30,11 @@ const ColorName = ({ colorChoosed }) => {
 }
 
 
-export default ColorName;
+const mapState = (state) => {
+    return {
+        colorChoosed: state.choosedColor
+    }
+}
+
+
+export default connect(mapState)(ColorName);

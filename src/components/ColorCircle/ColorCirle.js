@@ -1,8 +1,9 @@
-import React from 'react'
-import './ColorCircle.css'
-
+import React from 'react';
+import './ColorCircle.css';
 
 const ColorCircle = ({ defaultColor, colorChoosed }) => {
+
+
 
     let colorStyle = {
         backgroundColor: `${defaultColor}`
@@ -18,6 +19,7 @@ const ColorCircle = ({ defaultColor, colorChoosed }) => {
 
     return (
         <div id="ColorCircle">
+            <h3>ColorCircle</h3>
             <div className="colorCircle" style={colorStyle}></div>
         </div >
     )

@@ -1,20 +1,32 @@
 import React from 'react'
 import ColorMixerButton from '../ColorMixerButton/ColorMixerButton'
+import { connect } from 'react-redux';
+
+import { setColor } from '../../actionsCreator/actionsCreator'
 
 
-const ColorMixer = ({ onClickHandler }) => {
+const ColorMixer = ({ onClickHandler, ...props }) => {
     return (
         <div id="ColorMixer" style={{
             display: 'flex',
             flexDirection: 'row'
 
         }}>
-            <ColorMixerButton name="red" onClickHandler={onClickHandler} />
-            <ColorMixerButton name="yellow" onClickHandler={onClickHandler} />
-            <ColorMixerButton name="green" onClickHandler={onClickHandler} />
+            <h3>ColorMixer</h3>
+            <ColorMixerButton name="red" onClickHandler={props.a_setColor} />
+            <ColorMixerButton name="yellow" onClickHandler={props.a_setColor} />
+            <ColorMixerButton name="green" onClickHandler={props.a_setColor} />
         </div>
     )
 }
 
+const mapDispatch = dispatch => {
 
-export default ColorMixer;
+    return {
+        a_setColor: (e) => dispatch(setColor(e))
+    }
+
+}
+
+
+export default connect(null, mapDispatch)(ColorMixer);
